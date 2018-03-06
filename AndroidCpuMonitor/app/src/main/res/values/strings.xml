@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">AndroidCpuMonitor</string>
+    <string name="app_main_title">Cpu Monitor</string>
+    <string name="app_main_btn_sys_txt">system</string>
+    <string name="app_main_btn_cpu_txt">cpu</string>
+
 </resources>
