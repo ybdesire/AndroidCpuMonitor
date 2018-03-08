@@ -3,5 +3,8 @@
     <string name="app_main_title">Cpu Monitor</string>
     <string name="app_main_btn_sys_txt">system</string>
     <string name="app_main_btn_cpu_txt">cpu</string>
+    <string name="app_layout_sys_title">your system parameters</string>
+    <string name="app_layout_sys_home">Home</string>
+    <string name="title_activity_sys_monitor">SysMonitorActivity</string>
 
 </resources>
