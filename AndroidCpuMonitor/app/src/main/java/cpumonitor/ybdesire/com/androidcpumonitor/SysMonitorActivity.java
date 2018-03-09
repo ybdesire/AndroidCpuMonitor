@@ -17,7 +17,7 @@ public class SysMonitorActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sys_monitor);
 
-
+        // button home listener
         Button btn=(Button)findViewById(R.id.btn_home);//find button by id(defined at activity_main.xml)
         btn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -26,6 +26,15 @@ public class SysMonitorActivity extends AppCompatActivity {
             }
         });
 
+        // text view details
+        String str = "\n\n";
+
+        str += "OS Version: " + DeviceUtil.getAndroidOSVersion() + "\n\n";
+        str += "Device Type: " + DeviceUtil.getDeviceType() + "\n\n";
+        str += "Device Manufacturer: " + DeviceUtil.getManufacturer() + "\n\n";
+
+        TextView txt=(TextView)findViewById(R.id.txtDetails);//find output label by id
+        txt.setText(str);
 
     }
 
