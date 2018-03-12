@@ -15,14 +15,21 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
 
-        Button btn=(Button)findViewById(R.id.btn_sys);//find button by id(defined at activity_main.xml)
-        btn.setOnClickListener(new View.OnClickListener() {
+        Button btnsys=(Button)findViewById(R.id.btn_sys);//find button by id(defined at activity_main.xml)
+        btnsys.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Intent intnt = new Intent(MainActivity.this, SysMonitorActivity.class);
                 startActivity(intnt);
             }
         });
 
+        Button btncpu=(Button)findViewById(R.id.btn_cpu);//find button by id(defined at activity_main.xml)
+        btncpu.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent intnt = new Intent(MainActivity.this, CpuMonitorActivity.class);
+                startActivity(intnt);
+            }
+        });
 
     }
 }

@@ -19,7 +19,8 @@
         <activity
             android:name=".SysMonitorActivity"
             android:label="@string/title_activity_sys_monitor"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".CpuMonitorActivity"></activity>
     </application>
 
 </manifest>
