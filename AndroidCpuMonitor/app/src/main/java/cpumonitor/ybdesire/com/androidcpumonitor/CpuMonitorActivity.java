@@ -3,6 +3,7 @@ package cpumonitor.ybdesire.com.androidcpumonitor;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -23,10 +24,11 @@ public class CpuMonitorActivity extends AppCompatActivity {
             }
         });
 
+        double cpuUsage = 100*DeviceUtil.getCpuUsage();
         // text view details
         String str = "\n\n";
 
-        str += "CPU : " + "96%" + "\n\n";
+        str += "CPU : " + cpuUsage + "\n\n";
 
         TextView txt=(TextView)findViewById(R.id.txtDetails);//find output label by id
         txt.setText(str);
