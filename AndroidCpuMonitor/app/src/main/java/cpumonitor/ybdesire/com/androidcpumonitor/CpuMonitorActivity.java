@@ -9,10 +9,17 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.jjoe64.graphview.GraphView;
+import com.jjoe64.graphview.series.DataPoint;
+import com.jjoe64.graphview.series.LineGraphSeries;
+
+import java.util.ArrayList;
+
 public class CpuMonitorActivity extends AppCompatActivity {
 
     private int mInterval = 1000; // 1 seconds by default, can be changed later
     private Handler mHandler;
+    private ArrayList<Double> cpu_usage_list = new ArrayList<Double>();
     Runnable mStatusChecker = new Runnable() {
         @Override
         public void run() {
@@ -23,6 +30,40 @@ public class CpuMonitorActivity extends AppCompatActivity {
                 str += "CPU : " + cpuUsage + "\n\n";
                 TextView txt = (TextView) findViewById(R.id.txtDetails);//find output label by id
                 txt.setText(str);
+
+                // update graph
+                int listLen = 100;
+                if(cpu_usage_list.size()<listLen) {
+                    cpu_usage_list.add(cpuUsage);
+                }
+                else{
+                    for(int i=1;i<cpu_usage_list.size();i++)
+                    {
+                        cpu_usage_list.set(i-1, cpu_usage_list.get(i));
+                    }
+                    cpu_usage_list.set(cpu_usage_list.size()-1,cpuUsage );
+                }
+                DataPoint[] dps = new DataPoint[listLen];
+                for(int i=0;i<listLen;i++)
+                {
+                    if(i<cpu_usage_list.size()) {
+                        dps[i] = new DataPoint(i, cpu_usage_list.get(i));
+                    }
+                    else{
+                        dps[i] = new DataPoint(i, 0);
+                    }
+                }
+                GraphView graph = (GraphView) findViewById(R.id.graph_cpu);
+                // set manual Y bounds
+                graph.getViewport().setYAxisBoundsManual(true);
+                graph.getViewport().setMinY(-130);
+                graph.getViewport().setMaxY(150);
+
+                graph.removeAllSeries();
+
+                LineGraphSeries<DataPoint> series = new LineGraphSeries<>(dps);
+                graph.addSeries(series);
+
             } finally {
                 // 100% guarantee that this always happens, even if
                 // your update method throws an exception
@@ -54,5 +95,7 @@ public class CpuMonitorActivity extends AppCompatActivity {
         // get cpu usage and update by 1s timer
         mHandler = new Handler();
         startRepeatingTask();
+
+
     }
 }
