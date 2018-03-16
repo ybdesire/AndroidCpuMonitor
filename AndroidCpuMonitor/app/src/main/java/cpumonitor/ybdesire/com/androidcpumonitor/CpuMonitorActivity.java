@@ -58,8 +58,16 @@ public class CpuMonitorActivity extends AppCompatActivity {
                 graph.getViewport().setYAxisBoundsManual(true);
                 graph.getViewport().setMinY(-130);
                 graph.getViewport().setMaxY(150);
-
+                // remove all series
                 graph.removeAllSeries();
+                // activate horizontal zooming and scrolling
+                graph.getViewport().setScalable(true);
+                // activate horizontal scrolling
+                graph.getViewport().setScrollable(true);
+                // activate horizontal and vertical zooming and scrolling
+                graph.getViewport().setScalableY(true);
+                // activate vertical scrolling
+                graph.getViewport().setScrollableY(true);
 
                 LineGraphSeries<DataPoint> series = new LineGraphSeries<>(dps);
                 graph.addSeries(series);
