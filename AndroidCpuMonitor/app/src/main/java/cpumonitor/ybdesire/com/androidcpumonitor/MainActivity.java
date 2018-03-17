@@ -1,10 +1,13 @@
 package cpumonitor.ybdesire.com.androidcpumonitor;
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
@@ -30,6 +33,9 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intnt);
             }
         });
+
+        //ConstraintLayout myLayout = (ConstraintLayout) findViewById(R.id.layout_main);
+        //myLayout.setBackgroundColor(Color.BLUE);
 
     }
 }

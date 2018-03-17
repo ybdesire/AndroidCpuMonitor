@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:layout_gravity="bottom|center_horizontal"
+    android:background="#9fcbef"
     tools:context="cpumonitor.ybdesire.com.androidcpumonitor.MainActivity">
 
     <TextView

@@ -1,6 +1,10 @@
 package cpumonitor.ybdesire.com.androidcpumonitor;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -18,6 +22,7 @@ import java.util.ArrayList;
 public class CpuMonitorActivity extends AppCompatActivity {
 
     private int mInterval = 1000; // 1 seconds by default, can be changed later
+    private static int counter = 7;
     private Handler mHandler;
     private ArrayList<Double> cpu_usage_list = new ArrayList<Double>();
     Runnable mStatusChecker = new Runnable() {
@@ -25,11 +30,21 @@ public class CpuMonitorActivity extends AppCompatActivity {
         public void run() {
             try {
                 double cpuUsage = 100 * DeviceUtil.getCpuUsage();
-                // text view details
-                String str = "\n\n";
-                str += "CPU : " + cpuUsage + "\n\n";
-                TextView txt = (TextView) findViewById(R.id.txtDetails);//find output label by id
-                txt.setText(str);
+                // text view str_cpu_usage
+                String str_cpu_usage = "\n\n";
+                str_cpu_usage += "CPU Usage : " + cpuUsage + "\n\n";
+                TextView txt = (TextView) findViewById(R.id.txt_cpu_usage);//find output label by id
+                txt.setText(str_cpu_usage);
+
+                // text view txt_cpu_temp
+                counter++;
+                if(counter%8==0) {
+                    counter=0;
+                    String str_cpu_temp = "\n\n";
+                    str_cpu_temp += "CPU Temperature : " + DeviceUtil.getCpuTemp() + "\n\n";
+                    TextView txt_cpu_temp = (TextView) findViewById(R.id.txt_cpu_temp);//find output label by id
+                    txt_cpu_temp.setText(str_cpu_temp);
+                }
 
                 // update graph
                 int listLen = 100;
@@ -56,8 +71,12 @@ public class CpuMonitorActivity extends AppCompatActivity {
                 GraphView graph = (GraphView) findViewById(R.id.graph_cpu);
                 // set manual Y bounds
                 graph.getViewport().setYAxisBoundsManual(true);
-                graph.getViewport().setMinY(-130);
-                graph.getViewport().setMaxY(150);
+                graph.getViewport().setMinY(-15);
+                graph.getViewport().setMaxY(110);
+                // set manual X bounds
+                graph.getViewport().setXAxisBoundsManual(true);
+                graph.getViewport().setMinX(0);
+                graph.getViewport().setMaxX(listLen);
                 // remove all series
                 graph.removeAllSeries();
                 // activate horizontal zooming and scrolling
@@ -70,6 +89,9 @@ public class CpuMonitorActivity extends AppCompatActivity {
                 graph.getViewport().setScrollableY(true);
 
                 LineGraphSeries<DataPoint> series = new LineGraphSeries<>(dps);
+                series.setColor(Color.RED);
+                series.setDrawDataPoints(true);
+
                 graph.addSeries(series);
 
             } finally {
@@ -90,6 +112,16 @@ public class CpuMonitorActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cpu_monitor);
+        // init counter
+        counter = 7;
+
+        //AdMob
+        MobileAds.initialize(this, "ca-app-pub-8100413825150401/4031937877");
+        AdView mAdView;
+        mAdView = findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
+
 
         // button home listener
         Button btn=(Button)findViewById(R.id.btn_home);//find button by id(defined at activity_main.xml)

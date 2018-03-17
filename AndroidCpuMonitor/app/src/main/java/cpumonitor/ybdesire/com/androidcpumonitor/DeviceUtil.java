@@ -6,6 +6,7 @@ import android.util.Log;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.Arrays;
 
 /**
  * Created by bin_yin on 2018/2/26.
@@ -40,18 +41,27 @@ public class DeviceUtil {
     }
 
     public static double getCpuUsage(){
-        double cupersent = 0;
         try {
-            int[] cpu_usage_list = getCpuUsageStatistic();
-
-            for (int i = 0; i < cpu_usage_list.length; i++) {
-                cupersent += (double) cpu_usage_list[i] / 100;
+            int kth=15;
+            Double[] usage_10_list = new Double[kth];
+            for(int k=0;k<kth;k++) {
+                int[] cpu_usage_list = getCpuUsageStatistic();
+                Double cupersent = 0.0;
+                for (int i = 0; i < cpu_usage_list.length; i++) {
+                    cupersent += (double) cpu_usage_list[i] / 100;
+                }
+                usage_10_list[k] = cupersent;
             }
+            Double sum=0.0;
+            for(int i=0;i<usage_10_list.length;i++)
+            {
+                sum+=usage_10_list[i];
+            }
+            return sum/kth;
         }catch (NumberFormatException e)
         {
-            cupersent=-1.234;
+            return -10.123;
         }
-        return cupersent;
     }
 
     private static int[] getCpuUsageStatistic() {
@@ -103,4 +113,25 @@ public class DeviceUtil {
         return returnString;
     }
 
+    // get cpu temperature
+    public static float getCpuTemp() {
+        Process p;
+        try {
+            p = Runtime.getRuntime().exec("cat sys/class/thermal/thermal_zone0/temp");
+            p.waitFor();
+            BufferedReader reader = new BufferedReader(new InputStreamReader(p.getInputStream()));
+
+            String line = reader.readLine();
+            float temp = Float.parseFloat(line) / 1000.0f;
+
+            return temp;
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return 0.0f;
+        }
+    }
+
+
 }
+
