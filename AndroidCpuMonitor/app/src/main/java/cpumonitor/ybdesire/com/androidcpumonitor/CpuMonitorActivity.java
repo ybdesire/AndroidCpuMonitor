@@ -32,7 +32,7 @@ public class CpuMonitorActivity extends AppCompatActivity {
                 double cpuUsage = 100 * DeviceUtil.getCpuUsage();
                 // text view str_cpu_usage
                 String str_cpu_usage = "\n\n";
-                str_cpu_usage += "CPU Usage : " + cpuUsage + "\n\n";
+                str_cpu_usage += getResources().getString(R.string.cpu_usage) + cpuUsage + "%\n\n";
                 TextView txt = (TextView) findViewById(R.id.txt_cpu_usage);//find output label by id
                 txt.setText(str_cpu_usage);
 
@@ -41,7 +41,7 @@ public class CpuMonitorActivity extends AppCompatActivity {
                 if(counter%8==0) {
                     counter=0;
                     String str_cpu_temp = "\n\n";
-                    str_cpu_temp += "CPU Temperature : " + DeviceUtil.getCpuTemp() + "\n\n";
+                    str_cpu_temp += getResources().getString(R.string.cpu_tmp) + DeviceUtil.getCpuTemp() + "\n\n";
                     TextView txt_cpu_temp = (TextView) findViewById(R.id.txt_cpu_temp);//find output label by id
                     txt_cpu_temp.setText(str_cpu_temp);
                 }

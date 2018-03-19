@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Мониторинг процессора Android</string>
+    <string name="app_main_title">Мониторинг процессора</string>
+    <string name="app_main_btn_sys_txt">система</string>
+    <string name="app_main_btn_cpu_txt">ЦПУ</string>
+    <string name="app_layout_sys_title">Параметры вашей системы</string>
+    <string name="app_layout_sys_home">Главная страница</string>
+    <string name="title_activity_sys_monitor">Мониторинг системы</string>
+    <string name="sys_os_ver">Версия операционной системы:</string>
+    <string name="sys_dev_type">Тип устройства:</string>
+    <string name="sys_dev_manu">Производитель оборудования:</string>
+    <string name="cpu_usage">Использование ЦП:</string>
+    <string name="cpu_tmp">Температура процессора:</string>
+
+</resources>

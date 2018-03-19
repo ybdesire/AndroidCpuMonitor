@@ -42,7 +42,7 @@ public class DeviceUtil {
 
     public static double getCpuUsage(){
         try {
-            int kth=15;
+            int kth=3;
             Double[] usage_10_list = new Double[kth];
             for(int k=0;k<kth;k++) {
                 int[] cpu_usage_list = getCpuUsageStatistic();
@@ -60,7 +60,7 @@ public class DeviceUtil {
             return sum/kth;
         }catch (NumberFormatException e)
         {
-            return -10.123;
+            return -0.123;
         }
     }
 

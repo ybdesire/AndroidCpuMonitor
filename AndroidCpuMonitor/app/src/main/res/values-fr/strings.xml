@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Surveillance du processeur Android</string>
+    <string name="app_main_title">Surveillance du processeur</string>
+    <string name="app_main_btn_sys_txt">Système</string>
+    <string name="app_main_btn_cpu_txt">CPU</string>
+    <string name="app_layout_sys_title">Vos paramètres système</string>
+    <string name="app_layout_sys_home">Page d\'accueil</string>
+    <string name="title_activity_sys_monitor">Surveillance du système</string>
+    <string name="sys_os_ver">Version du système d\'exploitation:</string>
+    <string name="sys_dev_type">Type de périphérique:</string>
+    <string name="sys_dev_manu">Fabricant de l\'équipement:</string>
+    <string name="cpu_usage">Utilisation du processeur:</string>
+    <string name="cpu_tmp">Température du CPU:</string>
+
+</resources>

@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Android CPUの監視</string>
+    <string name="app_main_title">CPU監視</string>
+    <string name="app_main_btn_sys_txt">システム</string>
+    <string name="app_main_btn_cpu_txt">CPU</string>
+    <string name="app_layout_sys_title">あなたのシステムパラメータ</string>
+    <string name="app_layout_sys_home">ホームページ</string>
+    <string name="title_activity_sys_monitor">システム監視</string>
+    <string name="sys_os_ver">オペレーティングシステムのバージョン：</string>
+    <string name="sys_dev_type">デバイスタイプ：</string>
+    <string name="sys_dev_manu">機器メーカー：</string>
+    <string name="cpu_usage">CPU使用率：</string>
+    <string name="cpu_tmp">CPU温度：</string>
+
+</resources>

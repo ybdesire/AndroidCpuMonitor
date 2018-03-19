@@ -3,8 +3,13 @@
     <string name="app_main_title">Cpu Monitor</string>
     <string name="app_main_btn_sys_txt">system</string>
     <string name="app_main_btn_cpu_txt">cpu</string>
-    <string name="app_layout_sys_title">your system parameters</string>
+    <string name="app_layout_sys_title">Your system parameters</string>
     <string name="app_layout_sys_home">Home</string>
     <string name="title_activity_sys_monitor">SysMonitorActivity</string>
+    <string name="sys_os_ver">OS Version: </string>
+    <string name="sys_dev_type">Device Type: </string>
+    <string name="sys_dev_manu">Device Manufacturer: </string>
+    <string name="cpu_usage">CPU Usage : </string>
+    <string name="cpu_tmp">CPU Temperature : </string>
 
 </resources>

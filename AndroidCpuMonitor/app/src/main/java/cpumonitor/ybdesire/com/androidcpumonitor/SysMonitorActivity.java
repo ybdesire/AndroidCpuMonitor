@@ -29,9 +29,9 @@ public class SysMonitorActivity extends AppCompatActivity {
         // text view details
         String str = "\n\n";
 
-        str += "OS Version: " + DeviceUtil.getAndroidOSVersion() + "\n\n";
-        str += "Device Type: " + DeviceUtil.getDeviceType() + "\n\n";
-        str += "Device Manufacturer: " + DeviceUtil.getManufacturer() + "\n\n";
+        str += getResources().getString(R.string.sys_os_ver) + DeviceUtil.getAndroidOSVersion() + "\n\n";
+        str += getResources().getString(R.string.sys_dev_type) + DeviceUtil.getDeviceType() + "\n\n";
+        str += getResources().getString(R.string.sys_dev_manu) + DeviceUtil.getManufacturer() + "\n\n";
 
         TextView txt=(TextView)findViewById(R.id.txtDetails);//find output label by id
         txt.setText(str);
