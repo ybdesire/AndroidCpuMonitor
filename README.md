@@ -22,3 +22,11 @@ Android APP for CPU monitor.
 # Google Play 
 
 * pubshed to https://play.google.com/store/apps/details?id=cpumonitor.ybdesire.com.androidcpumonitor
+
+
+# App Screenshots
+
+
+![alt tag](app-1.png)
+![alt tag](app-2.png)
+![alt tag](app-3.png)
